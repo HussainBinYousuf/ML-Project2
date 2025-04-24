@@ -7,7 +7,8 @@ What we check
 3.  Hyper‑parameters behave sensibly (learning‑rate & n_estimators sweeps).
 4.  Internal bookkeeping: monotone `errors_`, reproducibility, feature‑importances.
 5.  Edge‑cases: NaNs, single‑class labels, near‑perfect collinearity.
-6.  Probability‑calibration sanity.
+6.  Stress test for large n_estimators.
+7. Additional tests for subsampling and max_depth.
 
 Everything is sized to finish in < 30s.
 """
@@ -83,9 +84,7 @@ def datasets():
     return out
 
 
-# ------------------------------------------------------------------ #
 # 1.  Basic API & guard‑rails
-# ------------------------------------------------------------------ #
 
 def test_init_defaults():
     gb = GradientBoostingClassifier()
